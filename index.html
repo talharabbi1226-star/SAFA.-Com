@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAFAH | সব কিছুর এক দোকান</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f4f8ff;--card:#ffffff;--text:#1d2a3a;--muted:#5f6f82;--accent:#1c6ef2;--accent-text:#ffffff;--line:#dbe5f3;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1722;--card:#18222f;--text:#eaf1fb;--muted:#9fb0c4;--accent:#5b9bff;--accent-text:#0f1722;--line:#27364a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1722;--card:#18222f;--text:#eaf1fb;--muted:#9fb0c4;--accent:#5b9bff;--accent-text:#0f1722;--line:#27364a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Hind Siliguri',system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.hero{text-align:center;padding:48px 0 28px}
+.hero h1{font-size:3rem;letter-spacing:.12em;margin:6px 0;color:var(--accent)}
+.hero p{color:var(--muted);margin:0 0 20px;font-size:1.1rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:14px 28px;border-radius:999px;font-weight:700;text-decoration:none}
+.search{width:100%;padding:14px 20px;font:inherit;font-size:1.05rem;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--text);margin-bottom:18px;outline:none}
+.search:focus{border-color:var(--accent)}
+h2{text-align:center;margin:40px 0 18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 12px;text-align:center}
+.card b{display:block;font-size:2rem}
+.card small{color:var(--muted)}
+.item small{display:block;margin-top:2px}
+.list .card{text-align:left;margin-bottom:12px;padding:16px 18px}
+.empty{display:none;text-align:center;margin-top:16px}
+.empty a{color:var(--accent);font-weight:700}
+footer{text-align:center;color:var(--muted);padding:36px 0 100px;font-size:.9rem}
+.float{position:fixed;left:0;right:0;bottom:0;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line);text-align:center}
+.float .btn{width:100%;max-width:420px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>SAFAH</h1>
+    <p>আপনার প্রয়োজনের সব কিছু, এক জায়গায়</p>
+    <input id="q" class="search" type="search" placeholder="🔍 পণ্য খুঁজুন (যেমন: চাল, শার্ট, চার্জার)" autocomplete="off">
+    <a class="btn" href="https://wa.me/8801605849444?text=আমি%20একটি%20অর্ডার%20করতে%20চাই">WhatsApp-এ অর্ডার করুন</a>
+  </section>
+
+  <h2>আমাদের পণ্য</h2>
+  <div class="grid" id="items">
+    <div class="card item" data-k="মুদি দৈনন্দিন চাল ডাল তেল আটা চিনি লবণ সাবান"><b>🛒</b>মুদি ও দৈনন্দিন পণ্য<small>চাল, ডাল, তেল, সাবান</small></div>
+    <div class="card item" data-k="পোশাক ফ্যাশন শার্ট প্যান্ট জামা শাড়ি থ্রি পিস জুতা"><b>👕</b>পোশাক ও ফ্যাশন<small>শার্ট, জামা, জুতা</small></div>
+    <div class="card item" data-k="ইলেকট্রনিক্স গ্যাজেট চার্জার হেডফোন মোবাইল ক্যাবল পাওয়ার ব্যাংক"><b>📱</b>ইলেকট্রনিক্স ও গ্যাজেট<small>চার্জার, হেডফোন</small></div>
+    <div class="card item" data-k="কসমেটিক্স বিউটি ক্রিম লিপস্টিক সাবান শ্যাম্পু ফেসওয়াশ"><b>💄</b>কসমেটিক্স ও বিউটি<small>ক্রিম, শ্যাম্পু</small></div>
+    <div class="card item" data-k="ঘর ঘরের জিনিসপত্র বাসন থালা বালতি লাইট চাদর"><b>🏠</b>ঘরের জিনিসপত্র<small>বাসন, বালতি, চাদর</small></div>
+    <div class="card item" data-k="গিফট উপহার খেলনা বক্স"><b>🎁</b>গিফট আইটেম<small>উপহার, খেলনা</small></div>
+  </div>
+  <div class="card empty" id="empty">😕 এই পণ্য তালিকায় পাইনি।<br><a id="ask" href="#">WhatsApp-এ জিজ্ঞেস করুন</a></div>
+
+  <h2>কেন SAFAH?</h2>
+  <div class="list">
+    <div class="card">✅ <b style="display:inline;font-size:1rem">সঠিক দাম</b><br><small>কোনো লুকানো খরচ নেই</small></div>
+    <div class="card">✅ <b style="display:inline;font-size:1rem">মানসম্মত পণ্য</b><br><small>বাছাই করা ভালো জিনিস</small></div>
+    <div class="card">✅ <b style="display:inline;font-size:1rem">দ্রুত ডেলিভারি</b><br><small>অর্ডার করুন, আমরা পৌঁছে দেব</small></div>
+  </div>
+
+  <h2>যোগাযোগ</h2>
+  <div class="card">📞 <a href="tel:+8801605849444" style="color:var(--accent);font-weight:700;text-decoration:none">01605849444</a><br><small>WhatsApp বা সরাসরি কল করুন</small></div>
+
+  <footer>© SAFAH · সব কিছুর এক দোকান</footer>
+</div>
+<div class="float"><a class="btn" href="https://wa.me/8801605849444?text=আমি%20একটি%20অর্ডার%20করতে%20চাই">📲 WhatsApp-এ অর্ডার করুন</a></div>
+<script>
+var q=document.getElementById('q'),items=document.querySelectorAll('.item'),empty=document.getElementById('empty'),ask=document.getElementById('ask');
+q.addEventListener('input',function(){
+  var t=q.value.trim().toLowerCase(),n=0;
+  items.forEach(function(el){
+    var m=!t||(el.textContent+' '+el.dataset.k).toLowerCase().indexOf(t)>-1;
+    el.style.display=m?'':'none';
+    if(m)n++;
+  });
+  empty.style.display=n?'none':'block';
+  ask.href='https://wa.me/8801605849444?text='+encodeURIComponent('আমি "'+q.value.trim()+'" খুঁজছি, আছে কি?');
+});
+</script>
+</body>
+</html>
